@@ -1,15 +1,18 @@
+using MyFirstApp.Data;
+using MyFirstApp.Models;
+using MyFirstApp.Models.Interfaces;
+using MyFirstApp.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using MyFirstApp.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace MyFirstApp
 {
@@ -31,7 +34,11 @@ namespace MyFirstApp
                 options.UseSqlServer(connectionString);
             });
 
+            services.AddTransient<IRoom, RoomsServices>();
+            services.AddTransient<IHotels, HotelServices>();
+         //   services.AddTransient<IAmenity, AmenitiesServices>();
             services.AddControllers();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

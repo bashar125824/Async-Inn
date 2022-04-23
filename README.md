@@ -2,8 +2,32 @@
 ---
 ## Name : Bashar Alrefae
 ---
-## Date : 14 / 4 / 2022
+## Date : 23 / 4 / 2022
 ---
+## Architecture :
+
+***In this lab , we just divide the work of controller , between interfaces and services , (interfaces and services are layers between controller and database) , so we used refactoring to apply the Dependency Injection***
+
+## Postman Verification : 
+
+***I use Rooms Table :***
+
+- **GET**
+
+![IMG](/Get.PNG)
+
+---
+
+- **POST**
+
+![IMG](/Post2.PNG)
+
+---
+
+- **DELETE**
+
+![IMG](/delete.PNG)
+
 ## Hotel ERD  :
 
 ![IMG](/Diagram2.PNG)
