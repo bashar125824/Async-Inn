@@ -15,5 +15,9 @@ namespace MyFirstApp.Models
         public string state { set; get; }
         public string address { set; get; }
         public string phoneNum { set; get; }
+
+       // Relation is 1 to many
+
+        public List<HotelRoom> HR { get; set; }
     }
 }

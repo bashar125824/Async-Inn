@@ -42,6 +42,8 @@ namespace MyFirstApp.Data
                new Amenity {amenityId = 3, name = "Shaving Cream" }
 
            );
+
+
         }
     }
 
