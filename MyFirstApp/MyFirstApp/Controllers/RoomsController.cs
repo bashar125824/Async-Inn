@@ -60,6 +60,8 @@ namespace MyFirstApp.Controllers
             return Ok(newRoom);
         }
 
+      
+
         // DELETE: api/Rooms/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRoom(int id)

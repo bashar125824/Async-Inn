@@ -12,5 +12,8 @@ namespace MyFirstApp.Models
 
         public string name { get; set;
         }
+
+        // Relation is 1 to many
+        public List<RoomAmenity> RA { get; set; }
     }
 }
