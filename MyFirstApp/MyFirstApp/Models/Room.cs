@@ -15,5 +15,12 @@ namespace MyFirstApp.Models
         // Relation is one to many , so add Navigation property as a list
         public HotelRoom HR { get; set; }
         public List<RoomAmenity> RA { get; set; }
+
+        public enum Layout
+        {
+            Master ,
+            VIP ,
+            Standard
+        }
     }
 }

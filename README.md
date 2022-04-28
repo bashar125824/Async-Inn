@@ -5,6 +5,12 @@
 ## Date : 28 / 4 / 2022
 ---
 
+# Lab 16 :
+
+***Cleaning up inputs and outputs of controllers to DTO's***
+
+---
+
 ## Room Routings :
 
 - **GET: api/Rooms** :	***return all rooms***

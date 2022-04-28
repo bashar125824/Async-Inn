@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using MyFirstApp.Models.Interfaces;
 using MyFirstApp.Data;
 using Microsoft.EntityFrameworkCore;
-
+using MyFirstApp.DTO;
 
 namespace MyFirstApp.Models.Services
 {
@@ -17,48 +17,100 @@ namespace MyFirstApp.Models.Services
         {
             _context = context;
         }
-
-
-        public async Task<Hotel> Create(Hotel h)
+        public async Task<Hotel> Create(Hotel hotel)
         {
-            _context.Entry(h).State = EntityState.Added;
+            _context.Entry(hotel).State = EntityState.Added;
             await _context.SaveChangesAsync();
-            return h;
+            return hotel;
         }
 
-        public async Task<Hotel> GetStudent(int id)
+        public async Task<HotelDTO> GetHotel(int id)
         {
-            Hotel hotels = await _context.Hotels.FindAsync(id);
+            return await _context.Hotels
 
-            return hotels;
+              .Select(hotel => new HotelDTO
+              {
+                  ID = id,
+                  Name = hotel.name,
+                  Address = hotel.address,
+                  City = hotel.city,
+                  State = hotel.state,
+                  PhoneNumber = hotel.phoneNum,
+                  Rooms = hotel.HR
+                  .Select(room => new HotelRoomDTO
+                  {
+                      HotelID = room.h.hotelId,
+                      RoomNumber = room.roomNum,
+                      Price = room.price,
+                      PetFriendly = room.petFriendly,
+                      RoomID = room.roomId,
+                      r = room.r.layout
+                      .Select(r => new RoomDTO
+                      {
+                          ID = room.r.roomId,
+                          Name = room.r.nickname,
+                          Layout = room.r.layout,
+                          Amenities = room.r.layout
+                         .Select(amenity => new AmenityDTO
+                         {
+                             ID = id,
+                           //  Name = amenity..Name,
+                         }).ToList()
+                      }).FirstOrDefault()
+                  }).ToList()
+              }).FirstOrDefaultAsync(a => a.ID == id);
         }
 
-        public async Task<List<Hotel>> GetStudents()
+        public async Task<List<HotelDTO>> GetHotels()
         {
-            var hotels = await _context.Hotels.ToListAsync();
-            return hotels;
+            return await _context.Hotels
+
+                .Select(hotel => new HotelDTO
+                {
+                    ID = hotel.hotelId,
+                    Name = hotel.name,
+                    Address = hotel.address,
+                    City = hotel.city,
+                    State = hotel.state,
+                    PhoneNumber = hotel.phoneNum,
+                    Rooms = hotel.HR
+                    .Select(room => new HotelRoomDTO
+                    {
+                        HotelID = room.h.hotelId,
+                        RoomNumber = room.roomNum,
+                        Price = room.price,
+                        PetFriendly = room.petFriendly,
+                        RoomID = room.roomId,
+                        r = room.h.name
+                        .Select(r => new RoomDTO
+                        {
+                            ID = room.r.roomId,
+                            Name = room.r.nickname,
+                            Layout = room.r.layout,
+                            Amenities = room.r.layout
+                           .Select(amenity => new AmenityDTO
+                           {
+                               //ID = amenity.Id,
+                               //Name = amenity.Amenity.Name,
+                           }).ToList()
+                        }).FirstOrDefault()
+                    }).ToList()
+                }).ToListAsync();
         }
 
-        public async Task<Hotel> UpdateStudent(int id, Hotel h)
+        public async Task<Hotel> UpdateHotel(int id, Hotel hotel)
         {
-            _context.Entry(h).State = EntityState.Modified;
-
+            _context.Entry(hotel).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-
-            return h;
+            return hotel;
         }
-
         public async Task Delete(int id)
         {
-            Hotel h = await GetStudent(id);
-
-            _context.Entry(h).State = EntityState.Deleted;
-
+            Hotel hotel = await _context.Hotels.FindAsync(id);
+            _context.Entry(hotel).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
-
-
         }
 
-       
+
     }
 }
