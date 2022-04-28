@@ -12,6 +12,7 @@ namespace MyFirstApp.Data
        public DbSet<Room> Rooms { get; set; }
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Amenity> Amenities { get; set; }
+        public DbSet<HotelRoom> HotelRooms { get; set; }
 
 
         public schoolDbContext(DbContextOptions options) : base(options) { }

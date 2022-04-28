@@ -2,8 +2,41 @@
 ---
 ## Name : Bashar Alrefae
 ---
-## Date : 23 / 4 / 2022
+## Date : 28 / 4 / 2022
 ---
+
+## Room Routings :
+
+- **GET: api/Rooms** :	***return all rooms***
+- **GET: api/Rooms/{id}**	: ***return room with id provided***
+- **PUT: api/Rooms/{id}**	: ***update room with id provided***
+- **POST: api/Rooms** : 	***add a new room***
+- **POST: api/Rooms/{roomId}/Amenity/{amenityId}**	: ***add aminity to room , depending on it's Id***
+- **DELETE: api/Rooms/{id}** :	***delete room with id provided***
+- **DELETE: api/Rooms/{roomId}/Amenity/{amenityId}** :	***delete aminity to room , depending on it's Id***
+
+---
+
+## Hotel Routings :
+
+- **GET: api/Hotels** :	***return all hotels***
+- **GET: api/Hotels/{id}** : ***return hotel with id provided***
+- **PUT: api/Hotels/{id}** : ***update hotel with id provided***
+- **POST: api/Hotels** : ***add new hotel***
+- **DELETE: api/Hotels/{id}** :	***delete hotel with id provided***
+
+---
+
+## Amenity Routings :
+
+- **GET: api/Amenities** :	***return all amenities***
+- **GET: api/Amenities/{id}** : ***return amenity with id provided***
+- **PUT: api/Amenities/{id}** : ***update amenity with id provided***
+- **POST: api/Amenities** : ***add new amenity***
+- **DELETE: api/v/{id}** :	***delete amenity with id provided***
+
+---
+
 ## Architecture :
 
 ***In this lab , we just divide the work of controller , between interfaces and services , (interfaces and services are layers between controller and database) , so we used refactoring to apply the Dependency Injection***

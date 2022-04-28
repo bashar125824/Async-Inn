@@ -36,7 +36,8 @@ namespace MyFirstApp
 
             services.AddTransient<IRoom, RoomsServices>();
             services.AddTransient<IHotels, HotelServices>();
-         //   services.AddTransient<IAmenity, AmenitiesServices>();
+            //   services.AddTransient<IAmenity, AmenitiesServices>();
+           // services.AddTransient<, HotelRoomServiece>();
             services.AddControllers();
            
         }
