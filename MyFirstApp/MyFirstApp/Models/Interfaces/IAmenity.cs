@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyFirstApp.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,11 +8,10 @@ namespace MyFirstApp.Models.Interfaces
 {
     public interface IAmenity
     {
-        Task<Amenity> Create(Hotel h);
-        Task<List<Amenity>> GetStudents();
-        Task<Amenity> GetStudent(int id);
-        Task<Amenity> UpdateStudent(int id, Amenity student);
+        Task<AmenityDTO> Create(AmenityDTO amenity);
+        Task<List<AmenityDTO>> GetAmenities();
+        Task<AmenityDTO> GetAmenity(int id);
+        Task<AmenityDTO> UpdateAmenity(int id, AmenityDTO amenity);
         Task Delete(int id);
-        Task<Amenity> Create(Amenity a);
     }
 }
