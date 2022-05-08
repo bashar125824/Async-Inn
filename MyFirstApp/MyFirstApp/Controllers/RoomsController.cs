@@ -26,7 +26,7 @@ namespace MyFirstApp.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Room>>> GetRooms()
         {
-            var rooms = await _room.GetStudents();
+            var rooms = await _room.GetRooms();
             return Ok(rooms);
         }
 
@@ -34,7 +34,7 @@ namespace MyFirstApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Room>> GetRoom(int id)
         {
-            Room r = await _room.GetStudent(id);
+            Room r = await _room.GetRoom(id);
             return Ok(r);
         }
 
