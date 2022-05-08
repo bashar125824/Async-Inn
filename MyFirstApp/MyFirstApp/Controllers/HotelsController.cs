@@ -27,7 +27,7 @@ namespace MyFirstApp.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Hotel>>> GetHotels()
         {
-            var hotels = await _hotel.GetStudents();
+            var hotels = await _hotel.GetHotels();
             return Ok(hotels);
         }
 
@@ -35,7 +35,7 @@ namespace MyFirstApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Hotel>> GetHotel(int id)
         {
-            Hotel h = await _hotel.GetStudent(id);
+            Hotel h = await _hotel.GetHotel(id);
             return Ok(h);
         }
 
